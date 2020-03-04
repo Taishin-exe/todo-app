@@ -51,7 +51,7 @@ const Form = (props) => {
     return (
         <FormStyle>
             <input type="text" class="input"/>
-            <a href="#" class="btn" onClick={handleClick}>追加</a>
+            <a href="#" class="btn" onClick={handleClick}>追加!</a>
         </FormStyle>
     )
 }
