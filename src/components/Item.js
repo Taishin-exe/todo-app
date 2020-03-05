@@ -1,4 +1,7 @@
 import React from 'react'
+import Button from '@material-ui/core/Button';
+import DeleteIcon from '@material-ui/icons/Delete';
+
 
 const Item = (props) => {
     const [isDone, setIsDone] = React.useState(false)
@@ -17,8 +20,9 @@ const Item = (props) => {
     return (
         <li>
             <p>{props.todoItem["content"]}</p>
-            <button type="button" onClick ={toggleIsDone}>{buttonText}</button>
-            <button type="button">削除</button>
+            <Button variant="contained" onClick ={toggleIsDone} color={isDone ? "secondary" : "default"}>{buttonText}</Button>
+            <DeleteIcon onClick={() => props.deleteTodoItem(props.todoItem['id'])}/>
+            {/* <Button variant="contained" color="secondary"　onClick={() => props.deleteTodoItem(props.todoItem['id'])}>削除</Button> */}
         </li>
     )
 }

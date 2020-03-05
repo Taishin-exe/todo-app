@@ -6,7 +6,11 @@ const List = (props) => {
     
     return (
         <ul>
-            {props.todoItems.map(todoItem => <Item todoItem={todoItem} key ={todoItem.id}/>)}
+            {props.todoItems.map(todoItem => 
+            <Item 
+            todoItem={todoItem} 
+            deleteTodoItem={props.deleteTodoItem}
+            key ={todoItem.id}/>)}
         </ul>
     )
 }

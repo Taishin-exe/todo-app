@@ -50,6 +50,10 @@ const App = () => {
         setTodoItems(newTodoItems)
     }
 
+    const deleteTodoItem =(id) => {
+        const newTodoItems = todoItems.filter(todoItem => id !== todoItem.id)
+        setTodoItems(newTodoItems);
+    }
 
 
     return (
@@ -58,7 +62,7 @@ const App = () => {
             <AppWrapper>
             <h1>My ToDo List</h1>
             <Form addTodoItem={addTodoItem}/>
-            <List todoItems={todoItems}/>
+            <List todoItems={todoItems} deleteTodoItem={deleteTodoItem}/>
             </AppWrapper>
             </>
     )
