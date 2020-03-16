@@ -1,6 +1,7 @@
 import React from 'react'
 import styled, {createGlobalStyle} from 'styled-components'
 import reset from 'styled-reset'
+import axios from 'axios'
 
 
 import Form from './Form'
@@ -16,7 +17,7 @@ h1 {
     font-family: 'Sacramento', cursive;
     padding: 30px;
     font-size: 40px;
-    background: linear-gradient(#000000, #fff);
+    background: linear-gradient(#000, #fff);
 }
 `
 
@@ -24,21 +25,11 @@ const GlobalStyle = createGlobalStyle`
 ${reset}
 `
 const App = () => {
-    const [todoItems, setTodoItems] = React.useState( [
-        {
-            id: 1,
-            content: 'テスト1'
-        },
-        {
-            id: 2,
-            content: 'テスト2'
-        },
-        {
-            id: 3,
-            content: 'テスト3'
-        }
-    ] 
-    )
+    const [todoItems, setTodoItems] = React.useState([])
+
+    React.useEffect(() => {
+        axios.get("http://localhost:3001/todos").then(res => setTodoItems(res.data))
+    },[])
 
     const addTodoItem = (newContent) => {
         // console.log(newTodoItem)
@@ -46,13 +37,22 @@ const App = () => {
             id: todoItems.length + 1,
             content: newContent
         }
+        axios.post("http://localhost:3001/todos", newTodoItem).then(res => {
+            const newTodoItems = todoItems.concat(res.data)
+            setTodoItems(newTodoItems)
+        })
         const newTodoItems = todoItems.concat(newTodoItem)
         setTodoItems(newTodoItems)
     }
 
     const deleteTodoItem =(id) => {
-        const newTodoItems = todoItems.filter(todoItem => id !== todoItem.id)
-        setTodoItems(newTodoItems);
+        const delTodo = todoItems.find(todo => todo.id ===id)
+        axios
+            .delete("http://localhost:3001/todos/" + id, {data: delTodo})
+            .then(res => {
+                const newTodoItems = todoItems.filter(todoItem => id !== todoItem.id)
+                setTodoItems(newTodoItems)
+            })
     }
 
 

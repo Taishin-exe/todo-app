@@ -1,39 +1,26 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const FormStyle = styled.form`
-background-color: gray;
-height: 24px;
-.btn {
-  position: relative;
-  display: inline-block;
-  font-weight: bold;
-  padding:  4px 0;
-  margin-left: 3px;
-  text-decoration: none;
-  color: #00BCD4;
-  background: #fff;
-  border-radius: 0 15px 15px 0;
-  transition: .4s;
-}
+/* background-color: gray; */
+height: 30px;
 
-.btn:active {
-  background: gray;
-}
 
-.input {
+/* .input {
     position: relative;
     padding: 5px 0 2px 0;
     border: 0;
-}
+} */
 `
 
 
 const Form = (props) => {
     console.log(props.addTodoItem)
 
-    const handleClick = () => {
+    const handleClick = (e) => {
+        e.preventDefault()
         const input =document.getElementsByTagName('input')[0]
         // console.log(input.value)
 
@@ -50,8 +37,10 @@ const Form = (props) => {
     }
     return (
         <FormStyle>
-            <input type="text" class="input"/>
-            <button className="btn" onClick={handleClick}>追加</button>
+            <TextField id="standard-basic" label="タイトル ※必須" />
+            {/* <TextField type="text" class="input"/> */}
+            {/* <button className="btn" onClick={(e) => handleClick(e)}>追加</button> */}
+            <Button type="submit" variant="contained" onClick={(e) => handleClick(e)}color="primary">追加</Button>
         </FormStyle>
     )
 }
