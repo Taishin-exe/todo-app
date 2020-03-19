@@ -5,7 +5,8 @@ import Button from '@material-ui/core/Button';
 
 const FormStyle = styled.form`
 /* background-color: gray; */
-height: 30px;
+height: 60px;
+
 
 
 /* .input {

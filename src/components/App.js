@@ -37,10 +37,10 @@ const App = () => {
             id: todoItems.length + 1,
             content: newContent
         }
-        axios.post("http://localhost:3001/todos", newTodoItem).then(res => {
-            const newTodoItems = todoItems.concat(res.data)
-            setTodoItems(newTodoItems)
-        })
+        // axios.post("http://localhost:3001/todos", newTodoItem).then(res => {
+        //     const newTodoItems = todoItems.concat(res.data)
+        //     setTodoItems(newTodoItems)
+        // })
         const newTodoItems = todoItems.concat(newTodoItem)
         setTodoItems(newTodoItems)
     }

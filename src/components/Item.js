@@ -5,8 +5,18 @@ import DeleteIcon from '@material-ui/icons/Delete';
 
 const ItemStyle = styled.li`
  background-color: white;
+ box-shadow: 2px 2px 4px gray;
+ width: 500px;
+ margin: 0 auto;
+ margin-bottom: 15px;
+ padding: 5px;
+ align-items: center;
+ justify-content: flex-end;
  display: flex;
-
+p {
+    width: 400px;
+    text-align: left;
+}
 `
 
 
