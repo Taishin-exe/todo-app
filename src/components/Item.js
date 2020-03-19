@@ -6,7 +6,9 @@ import DeleteIcon from '@material-ui/icons/Delete';
 const ItemStyle = styled.li`
  background-color: white;
  box-shadow: 2px 2px 4px inset;
+ border-radius: 10px;
  width: 500px;
+ height: 45px;
  margin: 0 auto;
  margin-bottom: 15px;
  padding: 5px;
