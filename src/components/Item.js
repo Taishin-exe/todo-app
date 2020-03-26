@@ -3,6 +3,9 @@ import styled from 'styled-components'
 import Button from '@material-ui/core/Button';
 import DeleteIcon from '@material-ui/icons/Delete';
 
+
+
+const Item = (props) => {
 const ItemStyle = styled.li`
  background-color: white;
  box-shadow: 2px 2px 4px inset;
@@ -20,9 +23,6 @@ p {
     text-align: left;
 }
 `
-
-
-const Item = (props) => {
     const [isDone, setIsDone] = React.useState(false)
 
     // 三項演算子　または条件演算子

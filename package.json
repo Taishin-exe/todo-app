@@ -17,7 +17,7 @@
     "styled-components": "^5.0.1",
     "styled-reset": "^4.1.0"
   },
-  "homepage": "https://taishin-exe.github.io/todo-app/",
+  "homepage": "./",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",

@@ -8,10 +8,12 @@ import Form from './Form'
 import List from './List'
 // import '../stylesheets/App.css'
 
+const baseUrl = '/todos'
+
 const AppWrapper = styled.div`
 @import url('https://fonts.googleapis.com/css?family=Sacramento');
 text-align: center;
-background: linear-gradient(#fff, #000);
+background: linear-gradient(#fff, #fff);
 height: 100vh;
 h1 {
     font-family: 'Sacramento', cursive;
@@ -28,7 +30,7 @@ const App = () => {
     const [todoItems, setTodoItems] = React.useState([])
 
     React.useEffect(() => {
-        axios.get("http://localhost:3001/todos").then(res => setTodoItems(res.data))
+        axios.get(baseUrl).then(res => setTodoItems(res.data))
     },[])
 
     const addTodoItem = (newContent) => {
@@ -37,18 +39,16 @@ const App = () => {
             id: todoItems.length + 1,
             content: newContent
         }
-        // axios.post("http://localhost:3001/todos", newTodoItem).then(res => {
-        //     const newTodoItems = todoItems.concat(res.data)
-        //     setTodoItems(newTodoItems)
-        // })
-        const newTodoItems = todoItems.concat(newTodoItem)
-        setTodoItems(newTodoItems)
+        axios.post(baseUrl, newTodoItem).then(res => {
+            const newTodoItems = todoItems.concat(res.data)
+            setTodoItems(newTodoItems)
+        })
     }
 
     const deleteTodoItem =(id) => {
         const delTodo = todoItems.find(todo => todo.id ===id)
         axios
-            .delete("http://localhost:3001/todos/" + id, {data: delTodo})
+            .delete(`${baseUrl}/${id}`, {data: delTodo})
             .then(res => {
                 const newTodoItems = todoItems.filter(todoItem => id !== todoItem.id)
                 setTodoItems(newTodoItems)

@@ -3,9 +3,6 @@ import styled from 'styled-components'
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-const FormStyle = styled.form`
-/* background-color: gray; */
-height: 60px;
 
 
 
@@ -14,10 +11,13 @@ height: 60px;
     padding: 5px 0 2px 0;
     border: 0;
 } */
-`
 
 
 const Form = (props) => {
+    const FormStyle = styled.form`
+    /* background-color: gray; */
+    height: 60px;
+    `
     console.log(props.addTodoItem)
 
     const handleClick = (e) => {
